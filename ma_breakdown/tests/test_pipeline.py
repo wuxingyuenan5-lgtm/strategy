@@ -50,3 +50,18 @@ def test_end_to_end_fixture_pipeline_writes_auditable_bundle(tmp_path: Path):
     assert "研究概览" in html and "事件明细" in html
     assert "上证50" in html and "中证全指" not in html
     assert "甲1" in html and "D1→收复D1价格" in html
+
+
+def test_run_network_uses_tencent_fetcher(monkeypatch, tmp_path):
+    import ma_breakdown.run_pipeline as rp
+    calls=[]
+    def fake_fetch(ins, begin, end, **kwargs):
+        calls.append((ins['key'],begin,end,kwargs))
+        df=pd.DataFrame({'date':[pd.Timestamp('2026-07-31')],'close':[100.0]})
+        return df, {'source':'tencent','symbol':ins.get('tencent_symbol')}
+    monkeypatch.setattr(rp,'fetch_tencent_instrument',fake_fetch)
+    monkeypatch.setattr(rp,'run_from_frames',lambda frames,instruments,cutoff,output_dir,template_path,**kwargs: {'keys':sorted(frames),'cutoff':cutoff})
+    result=rp.run_network(Path('ma_breakdown/config'),'2026-07-31',tmp_path/'out',Path('ma_breakdown/templates/report.html'))
+    assert len(calls)==7
+    assert all(c[3]['window_years']==2 for c in calls)
+    assert result['cutoff']=='2026-07-31'
