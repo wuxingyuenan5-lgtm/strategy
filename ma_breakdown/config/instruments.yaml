@@ -1,0 +1,43 @@
+instruments:
+  - key: sse
+    name: 上证指数
+    code: "000001"
+    secid: "1.000001"
+    category: 宽基综合
+    sample_start: "2005-01-04"
+  - key: sse50
+    name: 上证50
+    code: "000016"
+    secid: "1.000016"
+    category: 大盘蓝筹
+    sample_start: "2005-01-04"
+  - key: csi300
+    name: 沪深300
+    code: "000300"
+    secid: "1.000300"
+    category: 大盘蓝筹
+    sample_start: "2005-01-04"
+  - key: csi1000
+    name: 中证1000
+    code: "000852"
+    secid: "1.000852"
+    category: 小盘
+    sample_start: "2005-01-04"
+  - key: chinext
+    name: 创业板指
+    code: "399006"
+    secid: "0.399006"
+    category: 创业成长
+    sample_start: "2010-06-01"
+  - key: star50
+    name: 科创50
+    code: "000688"
+    secid: "1.000688"
+    category: 科创成长
+    sample_start: "2020-01-02"
+  - key: dividend
+    name: 中证红利
+    code: "000922"
+    secid: "1.000922"
+    category: 防守红利
+    sample_start: "2005-01-04"
