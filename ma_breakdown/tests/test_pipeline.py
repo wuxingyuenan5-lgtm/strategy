@@ -49,7 +49,7 @@ def test_end_to_end_fixture_pipeline_writes_auditable_bundle(tmp_path: Path):
     html=(out/"index.html").read_text()
     assert "研究概览" in html and "事件明细" in html
     assert "上证50" in html and "中证全指" not in html
-    assert "甲1" in html and "D1→收复D1价格" in html
+    assert "甲1" in html and "D1→P1" in html
 
 
 def test_run_network_uses_tencent_fetcher(monkeypatch, tmp_path):
