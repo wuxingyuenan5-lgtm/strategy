@@ -1,0 +1,8 @@
+version: v0.2
+cutoff: "2026-07-31"
+warmup_begin: "2004-01-01"
+ma_windows: [20, 25]
+peak_lookback: 10
+breakdown_confirm_days: 3
+recovery_confirm_days: 3
+horizons: [3, 5, 10, 20, 40, 60]
