@@ -53,16 +53,17 @@ def build_narrative(research:dict,conditional_panels:list[dict])->dict:
             q=[r for r in rows if r.get('ma_window')==ma and _ok(r.get('a3_median'))]
             if len(q)>=2:
                 worst=min(q,key=lambda r:r['a3_median']);best=max(q,key=lambda r:r['a3_median'])
-                framework.append(f"<b>{label}（MA{ma}）：</b>风险较高状态“{worst.get('bucket',worst.get('state','—'))}”的甲3中位 {_pct(worst.get('a3_median'))}、跌超10%概率 {_pct(worst.get('prob_a3_10'))}；相对较低状态“{best.get('bucket',best.get('state','—'))}”分别为 {_pct(best.get('a3_median'))} 和 {_pct(best.get('prob_a3_10'))}。")
+                framework.append(f"{label}（MA{ma}）：风险较高状态“{worst.get('bucket',worst.get('state','—'))}”的甲3中位 {_pct(worst.get('a3_median'))}、跌超10%概率 {_pct(worst.get('prob_a3_10'))}；相对较低状态“{best.get('bucket',best.get('state','—'))}”分别为 {_pct(best.get('a3_median'))} 和 {_pct(best.get('prob_a3_10'))}。")
     compare_block('d3_dev','确认深度');compare_block('d1_d3','三日跌速');compare_block('breadth','市场共振');compare_block('long_trend','长趋势背景')
     esc=blocks.get('escalation',{}).get('rows',[])
     if len(esc)>=2:
-        a=min(esc,key=lambda r:r.get('a3_median',0));b=max(esc,key=lambda r:r.get('a3_median',0));framework.append(f"<b>均线升级：</b>{a.get('state')}的甲3中位为 {_pct(a.get('a3_median'))}、乙中位 {_pct(a.get('b_median'))}；{b.get('state')}分别为 {_pct(b.get('a3_median'))} 和 {_pct(b.get('b_median'))}。MA25进一步确认可作为风险升级状态，而不是新的独立事件逻辑。")
+        a=min(esc,key=lambda r:r.get('a3_median',0));b=max(esc,key=lambda r:r.get('a3_median',0));framework.append(f"均线升级：{a.get('state')}的甲3中位为 {_pct(a.get('a3_median'))}、乙中位 {_pct(a.get('b_median'))}；{b.get('state')}分别为 {_pct(b.get('a3_median'))} 和 {_pct(b.get('b_median'))}。MA25进一步确认可作为风险升级状态，而不是新的独立事件逻辑。")
     ur=blocks.get('unrecovered',{}).get('rows',[])
     for ma in (20,25):
         r=next((x for x in ur if x.get('ma_window')==ma and x.get('elapsed')==20),None)
-        if r:framework.append(f"<b>时间状态（MA{ma}）：</b>D1后20个交易日仍未完成R3的历史事件，剩余修复时间中位约 {_num(r.get('remaining_median'),0)} 日，未来5日内完成R3的比例约 {_pct(r.get('recover_next5_rate'))}。这说明‘迟迟收不回’本身会更新风险判断。")
-    framework.append("<b>组合使用顺序：</b>先用Day3偏离与D1→D3跌速判断信号自身强弱，再用多指数广度和MA60/120/200背景判断是否处于系统性弱势；若MA20周期内进一步确认MA25，则视为风险升级；事件发生后再用‘已经多久没收回’动态更新风险。")
+        if r:framework.append(f"时间状态（MA{ma}）：D1后20个交易日仍未完成R3的历史事件，剩余修复时间中位约 {_num(r.get('remaining_median'),0)} 日，未来5日内完成R3的比例约 {_pct(r.get('recover_next5_rate'))}。‘迟迟收不回’本身会更新风险判断。")
+    framework.append("组合使用顺序：先用Day3偏离与D1→D3跌速判断信号自身强弱，再用多指数广度和MA60/120/200背景判断是否处于系统性弱势；若MA20周期内进一步确认MA25，则视为风险升级；事件发生后再用‘已经多久没收回’动态更新风险。")
+    if framework:conditional.append({"feature":"八、从统计报告到风险判断框架","text":" ".join(framework)})
 
     dur=[]
     if m20 and m25:dur.append(f"均线真收回明显慢于最终见底。MA20 D1→R3中位约 {_num(m20['d1_to_r3']['median'])} 个交易日，MA25约 {_num(m25['d1_to_r3']['median'])} 个交易日；风险释放和趋势修复不是同一个时间点。")
@@ -84,8 +85,10 @@ def build_narrative(research:dict,conditional_panels:list[dict])->dict:
         if a and b:
             gap=abs(float(a['a1']['mean'])-float(b['a1']['mean']))
             stage=f"该阶段MA20/MA25甲1均值分别为 {_pct(a['a1']['mean'])}/{_pct(b['a1']['mean'])}，差约 {gap*100:.1f} 个百分点；甲3中位分别为 {_pct(a['a3']['median'])}/{_pct(b['a3']['median'])}，D1→R3中位分别为 {_num(a['duration']['median'],0)}/{_num(b['duration']['median'],0)} 日。"
+            tail=abs(float(p['a1']['p90_risk']));mean_med=abs(float(p['a1']['mean'])-float(p['a1']['median']))
             if abs(float(p['a1']['mean']))>=.12:stage+=" 系统性风险占主导时，均线长度与风格差异通常会被整体下行压过。"
-            elif float(p['c']['median'])>0 and float(p['duration']['median'])<=15:stage+=" 丙中位为正且修复相对快，更接近强趋势中的阶段性回撤，但尾部仍需单独看P90/P99。"
+            elif tail>=.20 and mean_med>=.04:stage+=" 该阶段呈明显分布断裂：多数事件可能较快修复，但少数尾部事件极深；丙中位或短修复时间不能替代路径风险判断，必须同时看P90/P99与极端事件。"
+            elif float(p['c']['median'])>0 and float(p['duration']['median'])<=15 and tail<.15:stage+=" 丙中位为正且修复相对快，更接近强趋势中的阶段性回撤，但仍需独立观察尾部。"
             elif float(p['duration']['median'])>=20:stage+=" 平均跌幅未必最深，但修复时间偏长，属于‘拖在均线下方’风险更突出的环境。"
             else:stage+=" 风险深度和修复速度均处于中间区间，风格差异比单一均线参数更值得关注。"
             paras.append(stage)
