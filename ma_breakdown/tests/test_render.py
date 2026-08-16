@@ -14,19 +14,19 @@ def dummy_payload():
       "style_comparison":[],"extreme_events":[],
       "duration_rows":[{"index_name":"上证指数","ma_window":20,"n":5,"d1_to_trough":{"mean":8,"median":6,"p75":10,"p90":15,"p95":18,"max":20,"le5":.4,"le10":.7,"le20":1,"gt40":0},"d3_to_trough":{"median":4,"p90":12},"trough_to_r1":{"median":5,"p90":15},"trough_to_r3":{"median":7,"p90":18},"d1_to_r3":{"mean":21,"median":18,"p75":25,"p90":35,"p95":40,"max":45,"le5":.1,"le10":.2,"le20":.6,"gt40":.1},"d1_to_p1":{"median":12,"p90":80},"p1_censored_count":1,"p1_censored_rate":.2}],
       "duration_buckets":{"d1_to_p1":{"label":"D1→价格收复P1","rows":[{"bucket":"≤3","count":1,"rate":.2},{"bucket":"未收复","count":1,"rate":.2}]}},
-      "duration_risk_buckets":[{"bucket":"≤5","n":2,"a1_median":-.02,"a3_median":-.01,"b_median":-.04,"c_median":.01}],
-      "duration_correlations":[{"index_name":"上证指数","ma_window":20,"n":5,"corr_a1":-.5,"corr_a3":-.4,"corr_b":-.6,"corr_c":.2}],
+      "duration_risk_buckets":[{"ma_window":20,"bucket":"≤5","n":2,"a1_mean":-.025,"a1_median":-.02,"a1_p90":-.05,"a3_median":-.01,"b_median":-.04,"c_median":.01,"c_loss_rate":.2}],
+      "duration_correlations":[{"index_name":"上证指数","ma_window":20,"n":5,"corr_a1":.5,"corr_a3":.4,"corr_b":.6,"corr_p1_b":.3}],
       "longest_events":[],
       "recovery_curves":[{"days":20,"trough_rate":.8,"r3_rate":.6,"p1_rate":.7}],
       "window_summary":[{"days":10,"n":5,"median_maxdd":-.04,"p90_maxdd":-.1,"median_return":-.01,"p10_return":-.08}],
       "conditional_overall":[{"ma_window":20,"n":5,"prob_a1_5":.4,"prob_a1_10":.2,"prob_a1_15":.1,"prob_a1_20":0,"prob_a3_10":.1,"prob_r3_gt20":.2,"prob_r3_gt40":.1,"c_loss_rate":.4,"worst10_mean":-.15,"worst5_mean":-.2}],
       "conditional_blocks":[
-        {"key":"d3_dev","title":"Day3偏离均线深度","rows":[{"bucket":"≤-4%","n":2,"a3_median":-.08,"a3_p90":-.12,"prob_a3_10":.5,"r3_median":30}]},
+        {"key":"d3_dev","title":"Day3偏离均线深度","rows":[{"ma_window":20,"bucket":"≤-4%","n":2,"a1_median":-.1,"a1_p90":-.15,"a3_median":-.08,"a3_p90":-.12,"prob_a3_10":.5,"b_median":-.14,"c_median":-.03,"c_loss_rate":.6,"d3_to_trough_median":8,"d1_to_r3_median":30}]},
         {"key":"d1_d3","title":"D1→D3跌幅","rows":[]},{"key":"breadth","title":"多指数共振广度","rows":[]},{"key":"long_trend","title":"长期趋势背景","rows":[]},
         {"key":"escalation","title":"MA20→MA25升级","rows":[]},{"key":"unrecovered","title":"已持续未收回","rows":[]}
       ],
       "period_summary":[{"period":"2022至今","label":"test","start":"2022-01-01","end":"2026-07-31","n":5,"a1":{"mean":-.04,"median":-.03,"p90_risk":-.1},"a3":{"mean":-.03},"b":{"mean":-.07,"median":-.06},"c":{"mean":-.01,"median":.002},"duration":{"median":18}}],
-      "period_ma_summary":[{"period":"2022至今","label":"test","start":"2022-01-01","end":"2026-07-31","ma_window":20,"n":5,"a1":{"mean":-.04,"median":-.03,"p90_risk":-.1},"a3":{"mean":-.03,"median":-.02},"b":{"mean":-.07},"c":{"median":.002},"duration":{"median":18},"p1":{"median":12}}],
+      "period_ma_summary":[{"period":"2022至今","label":"test","start":"2022-01-01","end":"2026-07-31","ma_window":20,"n":5,"a1":{"mean":-.04,"median":-.03,"p90_risk":-.1,"p99_risk":-.18},"a2":{"median":-.025},"a3":{"mean":-.03,"median":-.02},"b":{"mean":-.07,"median":-.06},"c":{"median":.002},"duration":{"median":18},"p1":{"median":12}}],
       "period_detail":[],
       "conduction_top":[],
       "conduction_wide":[{"source_name":"上证指数","target_name":"上证50","ma_window":20,"denominator":5,"same_day_rate":.2,"rate_3":.4,"rate_5":.5,"rate_10":.6,"rate_20":.8,"avg_lag_10":3,"median_lag_10":2}],
@@ -49,10 +49,12 @@ def dummy_payload():
       "data_quality":{"status":"PASS","checks":[]},"research":research,"narrative":narrative
     }
 
+
 def test_validate_payload_requires_correct_index_set_and_counts():
     assert validate_payload(dummy_payload())==[]
     bad=dummy_payload(); bad["instruments"].append({"key":"all","name":"中证全指"})
     assert any("中证全指" in x for x in validate_payload(bad))
+
 
 def test_render_keeps_eight_pages_v02_definitions_and_v013_design_contract(tmp_path):
     out=tmp_path/"index.html"
@@ -78,10 +80,8 @@ def test_render_restores_full_analysis_and_interactive_signal_curve(tmp_path):
     out=tmp_path/"index.html"
     render_report(dummy_payload(),Path("ma_breakdown/templates/report.html"),out)
     html=out.read_text(encoding="utf-8")
-    # Wide-table analysis must scroll instead of dropping columns.
     assert html.count('class="table-scroll"') >= 10
     assert "P99" in html and "甲2" in html and "甲3" in html and "正收益率" in html
-    # Old research functions restored with v0.2 semantics.
     for text in ["计算验证","分布与尾部风险","指数风格差异","三日确认的成本","MA20 vs MA25","极端跌幅事件"]:
         assert text in html
     for text in ["先看概率","Day3偏离均线深度","D1→D3跌幅","多指数共振广度","长期趋势背景","MA20→MA25升级","已持续未收回"]:
@@ -90,14 +90,11 @@ def test_render_restores_full_analysis_and_interactive_signal_curve(tmp_path):
         assert text in html
     for text in ["阶段总体概览","逐时段解读","阶段 × 指数完整统计","信号曲线"]:
         assert text in html
-    # Interactive signal curve: period/index/MA controls + render target + new R3 marker semantics.
     for control in ["signalPeriod","signalIndex","signalMa","signalSvg"]:
         assert f'id="{control}"' in html
     assert "真跌破Day1" in html and "真收回R1" in html and "R3确认" in html
-    # Cross-index matrices + lag stats.
     assert "10日跟随率 / 中位滞后" in html and 'class="matrix"' in html
     assert "同日率" in html and "3日率" in html and "5日率" in html and "20日率" in html
-    # Event table must preserve full audit fields and filters.
     for control in ["eventIndex","eventMa","eventDate","eventReset"]:
         assert f'id="{control}"' in html
     for text in ["Peak价","D1 MA","D2 MA","D3 MA","R1价","R3价","P1价","D3偏离","共振广度"]:
