@@ -14,6 +14,10 @@ on:
       - ".github/workflows/ma-breakdown-v02.yml"
   workflow_dispatch:
 
+concurrency:
+  group: ma-breakdown-v02-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -38,66 +42,33 @@ jobs:
       - name: Run tests
         run: PYTHONPATH=. pytest ma_breakdown/tests -q
 
-      - name: Probe Sina and Tencent index history via AKShare
+      - name: Probe Tencent yearly index history
         run: |
-          pip install -q akshare
           python - <<'PY'
-          import akshare as ak
+          import json, requests
           symbols={
             '上证指数':'sh000001','上证50':'sh000016','沪深300':'sh000300','中证1000':'sh000852',
             '创业板指':'sz399006','科创50':'sh000688','中证红利':'sh000922'
           }
+          url='https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get'
+          headers={'User-Agent':'Mozilla/5.0','Referer':'https://gu.qq.com/'}
           for name,symbol in symbols.items():
               print('===',name,symbol)
-              try:
-                  df=ak.stock_zh_index_daily(symbol=symbol)
-                  print('SINA rows=',len(df),'first=',df['date'].iloc[0] if len(df) else None,'last=',df['date'].iloc[-1] if len(df) else None)
-              except Exception as e:
-                  print('SINA ERROR',type(e).__name__,str(e)[:240])
-              try:
-                  df=ak.stock_zh_index_daily_tx(symbol=symbol,start_date='20040101',end_date='20260731')
-                  print('TX rows=',len(df),'first=',df['date'].iloc[0] if len(df) else None,'last=',df['date'].iloc[-1] if len(df) else None)
-              except Exception as e:
-                  print('TX ERROR',type(e).__name__,str(e)[:240])
+              for year in (2005,2015,2025):
+                  params={'_var':'kline_dayqfq','param':f'{symbol},day,{year}-01-01,{year+1}-12-31,640,qfq','r':'0.8205512681390605'}
+                  try:
+                      r=requests.get(url,params=params,headers=headers,timeout=15)
+                      print(year,'status',r.status_code,'bytes',len(r.content),end=' ')
+                      r.raise_for_status()
+                      text=r.text
+                      raw=text[text.find('=')+1:].strip()
+                      obj=json.loads(raw)
+                      node=(obj.get('data') or {}).get(symbol) or {}
+                      rows=node.get('day') or node.get('qfqday') or []
+                      print('rows=',len(rows),'first=',rows[0][0] if rows else None,'last=',rows[-1][0] if rows else None,'keys=',list(node)[:5])
+                  except Exception as e:
+                      print('ERROR',type(e).__name__,str(e)[:180])
           PY
 
-      - name: Run full historical analysis
-        run: PYTHONPATH=. python ma_breakdown/run_pipeline.py --cutoff 2026-07-31 --output ma_breakdown/output/v0.2
-
-      - name: Verify production bundle
-        run: |
-          test -s ma_breakdown/output/v0.2/index.html
-          test -s ma_breakdown/output/v0.2/events.csv
-          test -s ma_breakdown/output/v0.2/summary.json
-          test -s ma_breakdown/output/v0.2/data_quality.json
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          q=json.loads(Path('ma_breakdown/output/v0.2/data_quality.json').read_text())
-          s=json.loads(Path('ma_breakdown/output/v0.2/summary.json').read_text())
-          assert q['status'] != 'FAIL', q
-          assert s['meta']['event_count'] > 0, s['meta']
-          assert len(s['instrument_names']) == 7
-          assert '中证全指' not in s['instrument_names']
-          html=Path('ma_breakdown/output/v0.2/index.html').read_text()
-          assert '{{' not in html and 'TODO' not in html
-          print('quality=',q['status'],'events=',s['meta']['event_count'])
-          PY
-
-      - name: Upload report artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ma-breakdown-v0.2-report
-          path: ma_breakdown/output/v0.2
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Commit generated analysis bundle
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f ma_breakdown/output/v0.2
-          if ! git diff --cached --quiet; then
-            git commit -m "Generate v0.2 report [skip ci]"
-            git push
-          fi
+      - name: Diagnostic stop before production
+        run: echo "Tencent probe complete; production source not switched yet."
