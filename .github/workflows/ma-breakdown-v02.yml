@@ -38,34 +38,27 @@ jobs:
       - name: Run tests
         run: PYTHONPATH=. pytest ma_breakdown/tests -q
 
-      - name: Probe Yahoo explicit date windows
+      - name: Probe Sina and Tencent index history via AKShare
         run: |
+          pip install -q akshare
           python - <<'PY'
-          import datetime as dt, requests
-          tickers={
-            '上证指数':'000001.SS','上证50':'000016.SS','沪深300':'000300.SS','中证1000':'000852.SS',
-            '创业板指':'399006.SZ','科创50':'000688.SS','中证红利':'000922.SS'
+          import akshare as ak
+          symbols={
+            '上证指数':'sh000001','上证50':'sh000016','沪深300':'sh000300','中证1000':'sh000852',
+            '创业板指':'sz399006','科创50':'sh000688','中证红利':'sh000922'
           }
-          windows=[('2005','2005-01-01','2006-01-01'),('2015','2015-01-01','2016-01-01'),('2025','2025-01-01','2026-01-01')]
-          headers={'User-Agent':'Mozilla/5.0'}
-          def ts(s): return int(dt.datetime.fromisoformat(s).replace(tzinfo=dt.UTC).timestamp())
-          for name,ticker in tickers.items():
-              print('===',name,ticker)
-              for label,start,end in windows:
-                  url=f'https://query1.finance.yahoo.com/v8/finance/chart/{ticker}'
-                  r=requests.get(url,params={'period1':ts(start),'period2':ts(end),'interval':'1d','events':'history','includeAdjustedClose':'true'},headers=headers,timeout=30)
-                  print(label,'status',r.status_code,'bytes',len(r.content),end=' ')
-                  if r.status_code != 200:
-                      print(r.text[:180]); continue
-                  chart=r.json().get('chart',{})
-                  result=(chart.get('result') or [None])[0]
-                  if not result:
-                      print('no_result error=',chart.get('error')); continue
-                  stamps=result.get('timestamp') or []
-                  meta=result.get('meta',{})
-                  first=dt.datetime.fromtimestamp(stamps[0],dt.UTC).date() if stamps else None
-                  last=dt.datetime.fromtimestamp(stamps[-1],dt.UTC).date() if stamps else None
-                  print('rows=',len(stamps),'first=',first,'last=',last,'symbol=',meta.get('symbol'))
+          for name,symbol in symbols.items():
+              print('===',name,symbol)
+              try:
+                  df=ak.stock_zh_index_daily(symbol=symbol)
+                  print('SINA rows=',len(df),'first=',df['date'].iloc[0] if len(df) else None,'last=',df['date'].iloc[-1] if len(df) else None)
+              except Exception as e:
+                  print('SINA ERROR',type(e).__name__,str(e)[:240])
+              try:
+                  df=ak.stock_zh_index_daily_tx(symbol=symbol,start_date='20040101',end_date='20260731')
+                  print('TX rows=',len(df),'first=',df['date'].iloc[0] if len(df) else None,'last=',df['date'].iloc[-1] if len(df) else None)
+              except Exception as e:
+                  print('TX ERROR',type(e).__name__,str(e)[:240])
           PY
 
       - name: Run full historical analysis
