@@ -38,7 +38,7 @@ jobs:
       - name: Run tests
         run: PYTHONPATH=. pytest ma_breakdown/tests -q
 
-      - name: Probe Yahoo history coverage
+      - name: Probe Yahoo explicit date windows
         run: |
           python - <<'PY'
           import datetime as dt, requests
@@ -46,18 +46,26 @@ jobs:
             '上证指数':'000001.SS','上证50':'000016.SS','沪深300':'000300.SS','中证1000':'000852.SS',
             '创业板指':'399006.SZ','科创50':'000688.SS','中证红利':'000922.SS'
           }
+          windows=[('2005','2005-01-01','2006-01-01'),('2015','2015-01-01','2016-01-01'),('2025','2025-01-01','2026-01-01')]
           headers={'User-Agent':'Mozilla/5.0'}
+          def ts(s): return int(dt.datetime.fromisoformat(s).replace(tzinfo=dt.UTC).timestamp())
           for name,ticker in tickers.items():
-              url=f'https://query1.finance.yahoo.com/v8/finance/chart/{ticker}'
-              r=requests.get(url,params={'range':'max','interval':'1d','events':'history','includeAdjustedClose':'true'},headers=headers,timeout=30)
-              print('---',name,ticker,'status',r.status_code,'bytes',len(r.content))
-              r.raise_for_status()
-              result=r.json()['chart']['result'][0]
-              ts=result.get('timestamp') or []
-              meta=result.get('meta',{})
-              first=dt.datetime.fromtimestamp(ts[0],dt.UTC).date() if ts else None
-              last=dt.datetime.fromtimestamp(ts[-1],dt.UTC).date() if ts else None
-              print('symbol=',meta.get('symbol'),'exchange=',meta.get('exchangeName'),'currency=',meta.get('currency'),'rows=',len(ts),'first=',first,'last=',last)
+              print('===',name,ticker)
+              for label,start,end in windows:
+                  url=f'https://query1.finance.yahoo.com/v8/finance/chart/{ticker}'
+                  r=requests.get(url,params={'period1':ts(start),'period2':ts(end),'interval':'1d','events':'history','includeAdjustedClose':'true'},headers=headers,timeout=30)
+                  print(label,'status',r.status_code,'bytes',len(r.content),end=' ')
+                  if r.status_code != 200:
+                      print(r.text[:180]); continue
+                  chart=r.json().get('chart',{})
+                  result=(chart.get('result') or [None])[0]
+                  if not result:
+                      print('no_result error=',chart.get('error')); continue
+                  stamps=result.get('timestamp') or []
+                  meta=result.get('meta',{})
+                  first=dt.datetime.fromtimestamp(stamps[0],dt.UTC).date() if stamps else None
+                  last=dt.datetime.fromtimestamp(stamps[-1],dt.UTC).date() if stamps else None
+                  print('rows=',len(stamps),'first=',first,'last=',last,'symbol=',meta.get('symbol'))
           PY
 
       - name: Run full historical analysis
