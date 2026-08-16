@@ -1,0 +1,72 @@
+[
+  {
+    "key": "sse",
+    "name": "上证指数",
+    "rows": 5483,
+    "first": "2004-01-02",
+    "last": "2026-07-31",
+    "source": "tencent",
+    "source_url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get",
+    "source_symbol": "sh000001"
+  },
+  {
+    "key": "sse50",
+    "name": "上证50",
+    "rows": 5483,
+    "first": "2004-01-02",
+    "last": "2026-07-31",
+    "source": "tencent",
+    "source_url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get",
+    "source_symbol": "sh000016"
+  },
+  {
+    "key": "csi300",
+    "name": "沪深300",
+    "rows": 5240,
+    "first": "2005-01-04",
+    "last": "2026-07-31",
+    "source": "tencent",
+    "source_url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get",
+    "source_symbol": "sh000300"
+  },
+  {
+    "key": "csi1000",
+    "name": "中证1000",
+    "rows": 5240,
+    "first": "2005-01-04",
+    "last": "2026-07-31",
+    "source": "tencent",
+    "source_url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get",
+    "source_symbol": "sh000852"
+  },
+  {
+    "key": "chinext",
+    "name": "创业板指",
+    "rows": 3925,
+    "first": "2010-06-01",
+    "last": "2026-07-31",
+    "source": "tencent",
+    "source_url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get",
+    "source_symbol": "sz399006"
+  },
+  {
+    "key": "star50",
+    "name": "科创50",
+    "rows": 1594,
+    "first": "2020-01-02",
+    "last": "2026-07-31",
+    "source": "tencent",
+    "source_url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get",
+    "source_symbol": "sh000688"
+  },
+  {
+    "key": "dividend",
+    "name": "中证红利",
+    "rows": 5240,
+    "first": "2005-01-04",
+    "last": "2026-07-31",
+    "source": "tencent",
+    "source_url": "https://proxy.finance.qq.com/ifzqgtimg/appstock/app/newfqkline/get",
+    "source_symbol": "sh000922"
+  }
+]
