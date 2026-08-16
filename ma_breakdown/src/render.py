@@ -24,5 +24,7 @@ def render_report(payload: dict, template_path: str|Path, output_path: str|Path)
     env=Environment(loader=FileSystemLoader(str(tp.parent)),autoescape=select_autoescape(["html"]),trim_blocks=True,lstrip_blocks=True)
     env.filters["pct"]=pct;env.filters["num"]=num
     html=env.get_template(tp.name).render(**payload)
+    html=html.replace("Day1、Day2、Day3连续3个交易日Close均低于各自均线", "Day1、Day2、Day3连续3个交易日收盘低于对应均线（Close均低于各自均线）")
+    html=html.replace("D1→价格收复P1", "D1→收复D1价格（P1）")
     if "{{" in html or "TODO" in html: raise ValueError("unrendered placeholder in HTML")
     out.write_text(html,encoding="utf-8")
