@@ -1,0 +1,39 @@
+name: MA Breakdown data-source diagnostic
+
+on:
+  push:
+    branches:
+      - agent/ma-breakdown-v0.2
+    paths:
+      - ".github/workflows/ma-breakdown-source-diagnostic.yml"
+  workflow_dispatch:
+
+jobs:
+  yahoo-probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Probe Yahoo chart history
+        run: |
+          python - <<'PY'
+          import datetime as dt, requests
+          tickers={
+            '上证指数':'000001.SS','上证50':'000016.SS','沪深300':'000300.SS','中证1000':'000852.SS',
+            '创业板指':'399006.SZ','科创50':'000688.SS','中证红利':'000922.SS'
+          }
+          headers={'User-Agent':'Mozilla/5.0'}
+          for name,ticker in tickers.items():
+              url=f'https://query1.finance.yahoo.com/v8/finance/chart/{ticker}'
+              r=requests.get(url,params={'range':'max','interval':'1d','events':'history','includeAdjustedClose':'true'},headers=headers,timeout=30)
+              print('---',name,ticker,'status',r.status_code,'bytes',len(r.content))
+              r.raise_for_status(); result=r.json()['chart']['result'][0]
+              ts=result.get('timestamp') or []
+              meta=result.get('meta',{})
+              first=dt.datetime.fromtimestamp(ts[0],dt.UTC).date() if ts else None
+              last=dt.datetime.fromtimestamp(ts[-1],dt.UTC).date() if ts else None
+              print('symbol=',meta.get('symbol'),'exchange=',meta.get('exchangeName'),'currency=',meta.get('currency'),'rows=',len(ts),'first=',first,'last=',last)
+          PY
