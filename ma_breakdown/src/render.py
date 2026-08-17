@@ -2,6 +2,7 @@ from __future__ import annotations
 import copy
 import re
 from datetime import date
+from html import escape
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from .release_patch import apply_v02_release_patch
@@ -58,6 +59,24 @@ def _release_payload(payload: dict) -> dict:
     return out
 
 
+def _preserve_duration_bottom_sheet(html: str, payload: dict) -> str:
+    """Keep the former duration research material as a folded bottom sheet after the new answer-first narrative."""
+    needle='<details class="report-details"><summary>研究底稿：累计曲线、相关性与固定窗口</summary><div class="details-body">'
+    if needle not in html:
+        return html
+    notes=payload.get("narrative",{}).get("duration_commentary",[]) or []
+    note_html=''.join(f'<p>{escape(str(x))}</p>' for x in notes)
+    longest=payload.get("research",{}).get("longest_events",[]) or []
+    longest_note=f'<p>底稿保留最长事件样本 {len(longest)} 条，可与事件明细交叉核验。</p>' if longest else '<p>最长事件保留在完整事件明细中，可按D1→R3排序核验。</p>'
+    block=(
+        '<h4>收回速度分布</h4><p>正文已经将见底、R3趋势修复与P1价格修复拆成三套时钟；原始累计曲线继续保留在本底稿。</p>'
+        '<h4>持续时间与跌幅深度</h4>'+note_html+
+        '<h4>各指数相关系数</h4><p>相关性表用于描述持续时间与最终跌幅的历史共变，不解释为因果。</p>'
+        '<h4>持续时间最长</h4>'+longest_note
+    )
+    return html.replace(needle,needle+block,1)
+
+
 def render_report(payload: dict, template_path: str|Path, output_path: str|Path) -> None:
     errors=validate_payload(payload)
     if errors: raise ValueError("payload validation failed: "+"; ".join(errors))
@@ -68,5 +87,6 @@ def render_report(payload: dict, template_path: str|Path, output_path: str|Path)
     html=html.replace("Day1、Day2、Day3连续3个交易日Close均低于各自均线", "Day1、Day2、Day3连续3个交易日收盘低于对应均线（Close均低于各自均线）")
     html=_strip_report_helper_notes(html)
     html=apply_v02_release_patch(html,_release_payload(payload))
+    html=_preserve_duration_bottom_sheet(html,payload)
     if "{{" in html or "TODO" in html: raise ValueError("unrendered placeholder in HTML")
     out.write_text(html,encoding="utf-8")
