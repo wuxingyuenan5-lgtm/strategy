@@ -3,7 +3,7 @@ import numpy as np
 from ma_breakdown.src.metrics import enrich_event_metrics, depth_summary, duration_summary, window_path_stats
 
 def prices():
-    closes=[110,108,106,104,102,101,100,105,103,107, 99,96,94,90,91,95,97,98,99,100,101,102,103]
+    closes=[110,108,106,104,102,101,100,105,103,107, 99,96,94,90,91,95,97,98,99,100,101,102,103,106,108]
     return pd.DataFrame({"date":pd.bdate_range("2026-01-01",periods=len(closes)),"close":closes})
 
 def event():
@@ -25,8 +25,9 @@ def test_enrich_calculates_a_b_c_and_p1_beyond_r3():
     assert np.isclose(r["a3"],90/94-1)
     assert np.isclose(r["b"],90/110-1)
     assert np.isclose(r["c"],98/99-1)
-    assert r["p1_idx"]==18
-    assert r["d1_to_p1"]==8
+    assert r["d0_idx"]==9 and np.isclose(r["d0_close"],107.0)
+    assert r["p1_idx"]==24
+    assert r["d1_to_p1"]==14
     assert r["d1_to_trough"]==3 and r["d3_to_trough"]==1
     assert r["trough_to_r1"]==4 and r["trough_to_r3"]==6 and r["d1_to_r3"]==9
 
@@ -52,6 +53,7 @@ def test_duration_summary_contains_requested_fields():
     d=duration_summary(e)
     assert "d1_to_trough" in d and "d1_to_p1" in d
     assert d["d1_to_trough"]["median"]==3
+    assert "p95" in d["d1_to_p1"]
 
 def test_window_path_stats_computes_return_and_max_drawdown():
     e=enrich_event_metrics(event(),prices())
