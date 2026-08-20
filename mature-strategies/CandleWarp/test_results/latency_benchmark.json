@@ -1,0 +1,84 @@
+{
+  "micro_benchmarks": [
+    {
+      "window": 50,
+      "mean_jit_us": 4.483048200000001,
+      "p50_jit_us": 4.375,
+      "p90_jit_us": 4.583,
+      "p99_jit_us": 5.875,
+      "lb_keogh_mean_us": 1.0878642,
+      "numpy_fallback_mean_us": 1367.75377,
+      "speedup_factor": 305.09459382901684
+    },
+    {
+      "window": 100,
+      "mean_jit_us": 9.423675399999999,
+      "p50_jit_us": 9.208,
+      "p90_jit_us": 9.792,
+      "p99_jit_us": 12.58342000000001,
+      "lb_keogh_mean_us": 0.9281366000000002,
+      "numpy_fallback_mean_us": 2868.3295733333334,
+      "speedup_factor": 304.3748273660783
+    },
+    {
+      "window": 200,
+      "mean_jit_us": 20.166568200000004,
+      "p50_jit_us": 19.917,
+      "p90_jit_us": 20.333,
+      "p99_jit_us": 27.54242000000001,
+      "lb_keogh_mean_us": 1.2015977999999998,
+      "numpy_fallback_mean_us": 6105.6081933333335,
+      "speedup_factor": 302.7589093235295
+    }
+  ],
+  "pipeline_benchmarks": [
+    {
+      "history_bars": 1000,
+      "window": 100,
+      "horizon": 50,
+      "dtw_rerank_k": 200,
+      "mean_ms": 225.12437780000002,
+      "p50_ms": 218.4623545,
+      "p90_ms": 239.1381794,
+      "p99_ms": 285.58792496,
+      "max_ms": 290.114209,
+      "throughput_qps": 4.4419889563624055
+    },
+    {
+      "history_bars": 5000,
+      "window": 100,
+      "horizon": 50,
+      "dtw_rerank_k": 200,
+      "mean_ms": 776.0896389333335,
+      "p50_ms": 752.8363335,
+      "p90_ms": 837.6180669,
+      "p99_ms": 992.8670587100003,
+      "max_ms": 1055.644084,
+      "throughput_qps": 1.288510952643464
+    },
+    {
+      "history_bars": 10000,
+      "window": 100,
+      "horizon": 50,
+      "dtw_rerank_k": 200,
+      "mean_ms": 1188.6059401666666,
+      "p50_ms": 1164.446896,
+      "p90_ms": 1290.6960369,
+      "p99_ms": 1376.578768,
+      "max_ms": 1394.685208,
+      "throughput_qps": 0.8413217250613255
+    },
+    {
+      "history_bars": 50000,
+      "window": 100,
+      "horizon": 50,
+      "dtw_rerank_k": 200,
+      "mean_ms": 5991.004194400001,
+      "p50_ms": 5759.183688,
+      "p90_ms": 6389.3597369,
+      "p99_ms": 8530.828986250002,
+      "max_ms": 9276.160125,
+      "throughput_qps": 0.16691692536863312
+    }
+  ]
+}

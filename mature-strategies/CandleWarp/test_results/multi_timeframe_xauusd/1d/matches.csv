@@ -1,0 +1,2 @@
+rank,start_index,end_index,start_time,end_time,distance,state,trend_bin,vol_bin,terminal_return
+1,413,452,2026-04-21 08:00:00,2026-06-15 08:00:00,287.1981327134654,down/highvol,down,highvol,-0.07148907531822568

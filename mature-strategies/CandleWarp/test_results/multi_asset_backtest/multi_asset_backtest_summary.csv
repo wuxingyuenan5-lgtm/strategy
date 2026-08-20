@@ -1,0 +1,4 @@
+Asset / Dataset,Trials,MAE Impv (%),Spearman IC,IC_IR,IC t-stat,25-75% Calib,Dir Hit Rate,Trade Win Rate,Profit Factor,Asym Trades,Asym Win Rate
+xauusd_1h_demo,54,+11.87%,-0.1639,-0.304,-1.92,51.9%,38.9%,33.3%,0.28,7,0.0%
+btc_1h_demo,53,-1.55%,-0.1012,-0.180,-1.12,41.5%,37.7%,33.3%,0.27,9,0.0%
+eurusd_1h_demo,55,+5.72%,-0.1392,-0.490,-3.14,43.6%,45.5%,31.2%,0.48,12,0.0%

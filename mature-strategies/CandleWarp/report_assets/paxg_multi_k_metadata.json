@@ -1,0 +1,152 @@
+{
+  "3": [
+    {
+      "cluster_id": 1,
+      "name": "温和震荡上行",
+      "frequency_count": 13577,
+      "frequency_pct": 54.14124496550624,
+      "trend_desc": "100h 温和多头通道 +0.83 ATR",
+      "median_return": 0.0,
+      "win_rate": 48.0,
+      "detailed_desc": "呈现规律性缓慢上爬走势，累计上涨 0.83 ATR。后市呈现典型的窄幅多头延续特征，胜率稳定在 48%，中位数收益 +0.00%，适合滚动持仓。",
+      "chart24": "report_assets/paxg_k3_cluster1_h24.png",
+      "chartOhlc": "report_assets/paxg_k3_cluster1_ohlc.png"
+    },
+    {
+      "cluster_id": 2,
+      "name": "单边强势拉升",
+      "frequency_count": 6420,
+      "frequency_pct": 25.60114846273478,
+      "trend_desc": "100h 强劲多头拉升 +9.61 ATR",
+      "median_return": -0.04284042328153714,
+      "win_rate": 48.0,
+      "detailed_desc": "该形态表现为平稳且具爆发性的单边多头推进，在100条烛台内拉升高达 9.61 ATR。前瞻24个周期，多头续航性极佳，中位数收益录得 -0.04%，胜率达到 48%，是极佳的顺势做多契机。",
+      "chart24": "report_assets/paxg_k3_cluster2_h24.png",
+      "chartOhlc": "report_assets/paxg_k3_cluster2_ohlc.png"
+    },
+    {
+      "cluster_id": 3,
+      "name": "单边断崖暴跌",
+      "frequency_count": 5080,
+      "frequency_pct": 20.25760657175898,
+      "trend_desc": "100h 强劲空头暴跌 -7.16 ATR",
+      "median_return": 0.12671982331851073,
+      "win_rate": 62.0,
+      "detailed_desc": "直线断崖式砸盘，累计下滑 -7.16 ATR，几乎无中继反抽。因为短期砸盘过急，后市24周期内具有强烈的二次惯性砸盘可能（多头胜率仅 62%），切忌盲目抄底。",
+      "chart24": "report_assets/paxg_k3_cluster3_h24.png",
+      "chartOhlc": "report_assets/paxg_k3_cluster3_ohlc.png"
+    }
+  ],
+  "4": [
+    {
+      "cluster_id": 1,
+      "name": "单边强势拉升",
+      "frequency_count": 9405,
+      "frequency_pct": 37.50448618255772,
+      "trend_desc": "100h 强劲多头拉升 +3.89 ATR",
+      "median_return": 0.06096201956314884,
+      "win_rate": 56.00000000000001,
+      "detailed_desc": "该形态表现为平稳且具爆发性的单边多头推进，在100条烛台内拉升高达 3.89 ATR。前瞻24个周期，多头续航性极佳，中位数收益录得 +0.06%，胜率达到 56%，是极佳的顺势做多契机。",
+      "chart24": "report_assets/paxg_k4_cluster1_h24.png",
+      "chartOhlc": "report_assets/paxg_k4_cluster1_ohlc.png"
+    },
+    {
+      "cluster_id": 2,
+      "name": "单边断崖暴跌",
+      "frequency_count": 9074,
+      "frequency_pct": 36.18455158113012,
+      "trend_desc": "100h 强劲空头暴跌 -2.25 ATR",
+      "median_return": 0.11839040307043414,
+      "win_rate": 60.0,
+      "detailed_desc": "直线断崖式砸盘，累计下滑 -2.25 ATR，几乎无中继反抽。因为短期砸盘过急，后市24周期内具有强烈的二次惯性砸盘可能（多头胜率仅 60%），切忌盲目抄底。",
+      "chart24": "report_assets/paxg_k4_cluster2_h24.png",
+      "chartOhlc": "report_assets/paxg_k4_cluster2_ohlc.png"
+    },
+    {
+      "cluster_id": 3,
+      "name": "单边强势拉升",
+      "frequency_count": 3947,
+      "frequency_pct": 15.739522271404075,
+      "trend_desc": "100h 强劲多头拉升 +11.45 ATR",
+      "median_return": 0.0,
+      "win_rate": 48.0,
+      "detailed_desc": "该形态表现为平稳且具爆发性的单边多头推进，在100条烛台内拉升高达 11.45 ATR。前瞻24个周期，多头续航性极佳，中位数收益录得 +0.00%，胜率达到 48%，是极佳的顺势做多契机。",
+      "chart24": "report_assets/paxg_k4_cluster3_h24.png",
+      "chartOhlc": "report_assets/paxg_k4_cluster3_ohlc.png"
+    },
+    {
+      "cluster_id": 4,
+      "name": "单边断崖暴跌",
+      "frequency_count": 2651,
+      "frequency_pct": 10.571439964908084,
+      "trend_desc": "100h 强劲空头暴跌 -9.33 ATR",
+      "median_return": 0.13725293082783585,
+      "win_rate": 54.0,
+      "detailed_desc": "直线断崖式砸盘，累计下滑 -9.33 ATR，几乎无中继反抽。因为短期砸盘过急，后市24周期内具有强烈的二次惯性砸盘可能（多头胜率仅 54%），切忌盲目抄底。",
+      "chart24": "report_assets/paxg_k4_cluster4_h24.png",
+      "chartOhlc": "report_assets/paxg_k4_cluster4_ohlc.png"
+    }
+  ],
+  "5": [
+    {
+      "cluster_id": 1,
+      "name": "温和震荡上行",
+      "frequency_count": 9493,
+      "frequency_pct": 37.85540535151733,
+      "trend_desc": "100h 温和多头通道 +0.80 ATR",
+      "median_return": 0.0,
+      "win_rate": 46.0,
+      "detailed_desc": "呈现规律性缓慢上爬走势，累计上涨 0.80 ATR。后市呈现典型的窄幅多头延续特征，胜率稳定在 46%，中位数收益 +0.00%，适合滚动持仓。",
+      "chart24": "report_assets/paxg_k5_cluster1_h24.png",
+      "chartOhlc": "report_assets/paxg_k5_cluster1_ohlc.png"
+    },
+    {
+      "cluster_id": 2,
+      "name": "单边强势拉升",
+      "frequency_count": 6107,
+      "frequency_pct": 24.35299278223073,
+      "trend_desc": "100h 强劲多头拉升 +6.76 ATR",
+      "median_return": 0.07689500383197823,
+      "win_rate": 56.00000000000001,
+      "detailed_desc": "该形态表现为平稳且具爆发性的单边多头推进，在100条烛台内拉升高达 6.76 ATR。前瞻24个周期，多头续航性极佳，中位数收益录得 +0.08%，胜率达到 56%，是极佳的顺势做多契机。",
+      "chart24": "report_assets/paxg_k5_cluster2_h24.png",
+      "chartOhlc": "report_assets/paxg_k5_cluster2_ohlc.png"
+    },
+    {
+      "cluster_id": 3,
+      "name": "单边断崖暴跌",
+      "frequency_count": 5745,
+      "frequency_pct": 22.909438928101448,
+      "trend_desc": "100h 强劲空头暴跌 -4.46 ATR",
+      "median_return": 0.16315776723258013,
+      "win_rate": 60.0,
+      "detailed_desc": "直线断崖式砸盘，累计下滑 -4.46 ATR，几乎无中继反抽。因为短期砸盘过急，后市24周期内具有强烈的二次惯性砸盘可能（多头胜率仅 60%），切忌盲目抄底。",
+      "chart24": "report_assets/paxg_k5_cluster3_h24.png",
+      "chartOhlc": "report_assets/paxg_k5_cluster3_ohlc.png"
+    },
+    {
+      "cluster_id": 4,
+      "name": "单边强势拉升",
+      "frequency_count": 2267,
+      "frequency_pct": 9.0401563185389,
+      "trend_desc": "100h 强劲多头拉升 +13.28 ATR",
+      "median_return": -0.11146713536905883,
+      "win_rate": 46.0,
+      "detailed_desc": "该形态表现为平稳且具爆发性的单边多头推进，在100条烛台内拉升高达 13.28 ATR。前瞻24个周期，多头续航性极佳，中位数收益录得 -0.11%，胜率达到 46%，是极佳的顺势做多契机。",
+      "chart24": "report_assets/paxg_k5_cluster4_h24.png",
+      "chartOhlc": "report_assets/paxg_k5_cluster4_ohlc.png"
+    },
+    {
+      "cluster_id": 5,
+      "name": "单边断崖暴跌",
+      "frequency_count": 1465,
+      "frequency_pct": 5.842006619611596,
+      "trend_desc": "100h 强劲空头暴跌 -11.41 ATR",
+      "median_return": 0.062755602396658,
+      "win_rate": 52.0,
+      "detailed_desc": "直线断崖式砸盘，累计下滑 -11.41 ATR，几乎无中继反抽。因为短期砸盘过急，后市24周期内具有强烈的二次惯性砸盘可能（多头胜率仅 52%），切忌盲目抄底。",
+      "chart24": "report_assets/paxg_k5_cluster5_h24.png",
+      "chartOhlc": "report_assets/paxg_k5_cluster5_ohlc.png"
+    }
+  ]
+}

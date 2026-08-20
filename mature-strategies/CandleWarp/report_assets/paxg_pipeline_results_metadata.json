@@ -1,0 +1,422 @@
+{
+  "1m": {
+    "state_meta": {
+      "timeframe": "1m",
+      "current_state": "flat/lowvol",
+      "latest_time": "2026-05-22 23:59:00",
+      "latest_close": 4509.6
+    },
+    "global_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 53.6621521460818,
+        "median_return": 0.09423533854514554,
+        "win_rate": 66.66666666666666,
+        "chart24": "report_assets/paxg_1m_k3_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_1m_k3_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 27.221885317700963,
+        "median_return": 0.14357438123278055,
+        "win_rate": 66.66666666666666,
+        "chart24": "report_assets/paxg_1m_k3_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_1m_k3_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 19.115962536217236,
+        "median_return": 0.0293176706122944,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_1m_k3_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_1m_k3_cluster3_ohlc.png"
+      }
+    ],
+    "state_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 47.69703172978505,
+        "median_return": 0.00536154305937897,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_1m_state_conditioned_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_1m_state_conditioned_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 28.393039918116685,
+        "median_return": 0.014527257740215571,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_1m_state_conditioned_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_1m_state_conditioned_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 23.90992835209826,
+        "median_return": 0.05594771174579072,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_1m_state_conditioned_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_1m_state_conditioned_cluster3_ohlc.png"
+      }
+    ]
+  },
+  "5m": {
+    "state_meta": {
+      "timeframe": "5m",
+      "current_state": "flat/midvol",
+      "latest_time": "2026-05-22 23:55:00",
+      "latest_close": 4509.6
+    },
+    "global_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 65.85480836590018,
+        "median_return": 0.3388770990250478,
+        "win_rate": 66.66666666666666,
+        "chart24": "report_assets/paxg_5m_k3_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_5m_k3_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 17.154765628786308,
+        "median_return": -0.12047293278591442,
+        "win_rate": 33.33333333333333,
+        "chart24": "report_assets/paxg_5m_k3_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_5m_k3_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 16.9904260053135,
+        "median_return": -0.3484725117690102,
+        "win_rate": 33.33333333333333,
+        "chart24": "report_assets/paxg_5m_k3_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_5m_k3_cluster3_ohlc.png"
+      }
+    ],
+    "state_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 49.37172545642942,
+        "median_return": -0.0825269253817873,
+        "win_rate": 33.33333333333333,
+        "chart24": "report_assets/paxg_5m_state_conditioned_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_5m_state_conditioned_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 27.270471826155486,
+        "median_return": -0.1284450456942421,
+        "win_rate": 16.666666666666664,
+        "chart24": "report_assets/paxg_5m_state_conditioned_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_5m_state_conditioned_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 23.357802717415098,
+        "median_return": 0.0804317629544582,
+        "win_rate": 66.66666666666666,
+        "chart24": "report_assets/paxg_5m_state_conditioned_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_5m_state_conditioned_cluster3_ohlc.png"
+      }
+    ]
+  },
+  "15m": {
+    "state_meta": {
+      "timeframe": "15m",
+      "current_state": "flat/midvol",
+      "latest_time": "2026-05-22 23:45:00",
+      "latest_close": 4509.6
+    },
+    "global_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 54.002668886334504,
+        "median_return": -0.1230342100770776,
+        "win_rate": 16.666666666666664,
+        "chart24": "report_assets/paxg_15m_k3_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_15m_k3_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 24.014692087148386,
+        "median_return": 0.40092979755710356,
+        "win_rate": 66.66666666666666,
+        "chart24": "report_assets/paxg_15m_k3_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_15m_k3_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 21.982639026517102,
+        "median_return": 0.01629243786646084,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_15m_k3_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_15m_k3_cluster3_ohlc.png"
+      }
+    ],
+    "state_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 46.2005896155466,
+        "median_return": -0.051881087788763214,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_15m_state_conditioned_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_15m_state_conditioned_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 27.784128512123218,
+        "median_return": -0.0933703958211407,
+        "win_rate": 33.33333333333333,
+        "chart24": "report_assets/paxg_15m_state_conditioned_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_15m_state_conditioned_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 26.01528187233019,
+        "median_return": 0.029466013793211232,
+        "win_rate": 66.66666666666666,
+        "chart24": "report_assets/paxg_15m_state_conditioned_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_15m_state_conditioned_cluster3_ohlc.png"
+      }
+    ]
+  },
+  "30m": {
+    "state_meta": {
+      "timeframe": "30m",
+      "current_state": "flat/highvol",
+      "latest_time": "2026-05-22 23:30:00",
+      "latest_close": 4509.6
+    },
+    "global_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 50.99685758800074,
+        "median_return": -0.3279400383355946,
+        "win_rate": 16.666666666666664,
+        "chart24": "report_assets/paxg_30m_k3_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_30m_k3_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 27.81958858168951,
+        "median_return": 0.384360069761136,
+        "win_rate": 83.33333333333334,
+        "chart24": "report_assets/paxg_30m_k3_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_30m_k3_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 21.18355383030975,
+        "median_return": -0.15456491978834141,
+        "win_rate": 16.666666666666664,
+        "chart24": "report_assets/paxg_30m_k3_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_30m_k3_cluster3_ohlc.png"
+      }
+    ],
+    "state_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 46.45220168834132,
+        "median_return": -0.29001857234742245,
+        "win_rate": 16.666666666666664,
+        "chart24": "report_assets/paxg_30m_state_conditioned_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_30m_state_conditioned_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 28.63335614875656,
+        "median_return": -0.08706589870402515,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_30m_state_conditioned_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_30m_state_conditioned_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 24.914442162902123,
+        "median_return": 0.029005189694608635,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_30m_state_conditioned_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_30m_state_conditioned_cluster3_ohlc.png"
+      }
+    ]
+  },
+  "1h": {
+    "state_meta": {
+      "timeframe": "1h",
+      "current_state": "down/highvol",
+      "latest_time": "2026-05-22 23:00:00",
+      "latest_close": 4509.6
+    },
+    "global_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 45.37159132865657,
+        "median_return": -0.0025980815987203254,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_1h_k3_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_1h_k3_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 29.917189725196476,
+        "median_return": 0.051152674406379495,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_1h_k3_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_1h_k3_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 24.71121894614695,
+        "median_return": -0.17380566163137656,
+        "win_rate": 33.33333333333333,
+        "chart24": "report_assets/paxg_1h_k3_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_1h_k3_cluster3_ohlc.png"
+      }
+    ],
+    "state_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 43.04915514592934,
+        "median_return": -0.0568633709293942,
+        "win_rate": 33.33333333333333,
+        "chart24": "report_assets/paxg_1h_state_conditioned_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_1h_state_conditioned_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 32.02764976958525,
+        "median_return": -0.30221033770665984,
+        "win_rate": 33.33333333333333,
+        "chart24": "report_assets/paxg_1h_state_conditioned_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_1h_state_conditioned_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 24.923195084485407,
+        "median_return": -0.43699313106619897,
+        "win_rate": 16.666666666666664,
+        "chart24": "report_assets/paxg_1h_state_conditioned_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_1h_state_conditioned_cluster3_ohlc.png"
+      }
+    ]
+  },
+  "4h": {
+    "state_meta": {
+      "timeframe": "4h",
+      "current_state": "down/highvol",
+      "latest_time": "2026-05-22 20:00:00",
+      "latest_close": 4509.6
+    },
+    "global_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 46.48905410987195,
+        "median_return": -0.7690693054961562,
+        "win_rate": 33.33333333333333,
+        "chart24": "report_assets/paxg_4h_k3_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_4h_k3_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 27.98430400660884,
+        "median_return": 0.6591161232774811,
+        "win_rate": 66.66666666666666,
+        "chart24": "report_assets/paxg_4h_k3_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_4h_k3_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 25.526641883519208,
+        "median_return": 0.9428147389813013,
+        "win_rate": 100.0,
+        "chart24": "report_assets/paxg_4h_k3_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_4h_k3_cluster3_ohlc.png"
+      }
+    ],
+    "state_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 61.87214611872146,
+        "median_return": 0.8120299694240107,
+        "win_rate": 66.66666666666666,
+        "chart24": "report_assets/paxg_4h_state_conditioned_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_4h_state_conditioned_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 24.65753424657534,
+        "median_return": 0.07801808866783055,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_4h_state_conditioned_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_4h_state_conditioned_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 13.470319634703195,
+        "median_return": 0.5489667672329057,
+        "win_rate": 66.66666666666666,
+        "chart24": "report_assets/paxg_4h_state_conditioned_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_4h_state_conditioned_cluster3_ohlc.png"
+      }
+    ]
+  },
+  "1d": {
+    "state_meta": {
+      "timeframe": "1d",
+      "current_state": "up/highvol",
+      "latest_time": "2026-05-22 00:00:00",
+      "latest_close": 4509.6
+    },
+    "global_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 49.79253112033195,
+        "median_return": 2.0765784675735754,
+        "win_rate": 83.33333333333334,
+        "chart24": "report_assets/paxg_1d_k3_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_1d_k3_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 36.7911479944675,
+        "median_return": -0.5590834037744796,
+        "win_rate": 33.33333333333333,
+        "chart24": "report_assets/paxg_1d_k3_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_1d_k3_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 13.416320885200554,
+        "median_return": 0.6603748909081553,
+        "win_rate": 100.0,
+        "chart24": "report_assets/paxg_1d_k3_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_1d_k3_cluster3_ohlc.png"
+      }
+    ],
+    "state_clusters": [
+      {
+        "cluster_id": 1,
+        "frequency_pct": 46.38783269961977,
+        "median_return": -0.596577235138307,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_1d_state_conditioned_cluster1_h24.png",
+        "chartOhlc": "report_assets/paxg_1d_state_conditioned_cluster1_ohlc.png"
+      },
+      {
+        "cluster_id": 2,
+        "frequency_pct": 33.460076045627375,
+        "median_return": -0.5830785635598967,
+        "win_rate": 25.0,
+        "chart24": "report_assets/paxg_1d_state_conditioned_cluster2_h24.png",
+        "chartOhlc": "report_assets/paxg_1d_state_conditioned_cluster2_ohlc.png"
+      },
+      {
+        "cluster_id": 3,
+        "frequency_pct": 20.15209125475285,
+        "median_return": 0.4479362813006815,
+        "win_rate": 50.0,
+        "chart24": "report_assets/paxg_1d_state_conditioned_cluster3_h24.png",
+        "chartOhlc": "report_assets/paxg_1d_state_conditioned_cluster3_ohlc.png"
+      }
+    ]
+  }
+}

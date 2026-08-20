@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A-Shape Similarity Report</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 32px; color: #111827; }
+    main { max-width: 1120px; margin: 0 auto; }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    h2 { font-size: 16px; margin-top: 28px; }
+    p { color: #475569; }
+    img { width: 100%; height: auto; border: 1px solid #e5e7eb; margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+    th, td { border-bottom: 1px solid #e5e7eb; padding: 8px 10px; text-align: left; font-size: 13px; }
+    th { background: #f8fafc; }
+    .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin: 16px 0; }
+    .meta div { background: #f8fafc; padding: 10px 12px; border: 1px solid #e5e7eb; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>A-Shape Similarity Report</h1>
+  <p>Historical distribution view only. This report does not produce a trading signal.</p>
+  <div class="meta">
+    <div><strong>Timeframe</strong><br>15min</div>
+    <div><strong>Query start</strong><br>2026-08-19 11:45:00</div>
+    <div><strong>Query end</strong><br>2026-08-20 02:30:00</div>
+    <div><strong>State</strong><br>up/highvol</div>
+    <div><strong>Matches</strong><br>3 / 25</div>
+  </div>
+  <h2>Forward Return Distribution</h2>
+  <img src="distribution.png" alt="Forward return distribution">
+  <h2>Similarity Diagnostics</h2>
+  <img src="similarity_diagnostics.png" alt="Similarity diagnostics">
+  <h2>Terminal Return Quantiles</h2>
+  <table>
+    <thead><tr><th>Quantile</th><th>Return at horizon</th></tr></thead>
+    <tbody><tr><td>10%</td><td>0.033%</td></tr>
+<tr><td>25%</td><td>0.046%</td></tr>
+<tr><td>50%</td><td>0.068%</td></tr>
+<tr><td>75%</td><td>0.102%</td></tr>
+<tr><td>90%</td><td>0.123%</td></tr></tbody>
+  </table>
+  <h2>Top Matches</h2>
+  <table>
+    <thead><tr><th>Rank</th><th>Start</th><th>End</th><th>Distance</th><th>Terminal return</th></tr></thead>
+    <tbody><tr><td>1</td><td>2026-08-14 12:00:00</td><td>2026-08-17 11:45:00</td><td>183.7590</td><td>0.025%</td></tr>
+<tr><td>2</td><td>2026-08-14 14:30:00</td><td>2026-08-17 14:15:00</td><td>218.4374</td><td>0.136%</td></tr>
+<tr><td>3</td><td>2026-08-17 11:00:00</td><td>2026-08-18 01:45:00</td><td>268.2823</td><td>0.068%</td></tr></tbody>
+  </table>
+</main>
+</body>
+</html>
