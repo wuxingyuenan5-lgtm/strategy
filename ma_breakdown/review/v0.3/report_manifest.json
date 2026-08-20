@@ -1,0 +1,11 @@
+{
+  "version": "v0.3-review-baseline-2026-08-20",
+  "report_filename": "均线有效跌破统计_v0.3_重新分析_指数分层与真假信号_完整审阅版.html",
+  "sha256": "f7936c9ecf002a915aba66de0c43920d91b1e067261255319fbb2c8ed4620d99",
+  "size_bytes": 5663493,
+  "data_cutoff": "2026-07-31",
+  "completed_cycles": 1505,
+  "d1_candidates": 2374,
+  "candidate_r1_attempts": 2282,
+  "status": "review_baseline_before_signal_statistics_optimization"
+}
