@@ -1,11 +1,16 @@
 {
-  "version": "v0.3-review-baseline-2026-08-20",
-  "report_filename": "均线有效跌破统计_v0.3_重新分析_指数分层与真假信号_完整审阅版.html",
-  "sha256": "f7936c9ecf002a915aba66de0c43920d91b1e067261255319fbb2c8ed4620d99",
-  "size_bytes": 5663493,
+  "version": "v0.3-review-baseline-2026-08-21",
+  "report_filename": "均线有效跌破统计_v0.3_研究分析深化与版式优化版.html",
+  "report_sha256": "bfcfe6c883b92f34e85c92530a90aed035a4d7122cb71c8b4825d35b95fb85c5",
+  "report_size_bytes": 5538947,
+  "archive_path": "ma_breakdown/review/v0.3/report/均线有效跌破统计_v0.3_研究分析深化与版式优化版.html.xz",
+  "archive_sha256": "de1704409b3c938115620082a566960cc1f6a9373a807c9fdaf611a69265e559",
+  "archive_size_bytes": 586632,
   "data_cutoff": "2026-07-31",
   "completed_cycles": 1505,
   "d1_candidates": 2374,
   "candidate_r1_attempts": 2282,
-  "status": "review_baseline_before_signal_statistics_optimization"
+  "core_indices": ["上证指数", "中证1000", "创业板指", "科创50"],
+  "major_quantiles": ["median", "P75", "P90", "P95", "P99"],
+  "status": "current_review_baseline_after_analysis_and_layout_optimization"
 }
